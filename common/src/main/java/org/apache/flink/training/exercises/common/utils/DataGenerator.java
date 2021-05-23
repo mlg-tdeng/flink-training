@@ -32,6 +32,8 @@ public class DataGenerator {
 
 	private static final int SECONDS_BETWEEN_RIDES = 20;
 	private static final int NUMBER_OF_DRIVERS = 200;
+	private static final int NUMBER_OF_TEAMS = 40;
+	private static final int NUMBER_OF_GAME_FRANCHISE = 1;
 	private static final Instant beginTime = Instant.parse("2020-01-01T12:00:00.00Z");
 
 	private transient long rideId;
@@ -139,6 +141,36 @@ public class DataGenerator {
 	 */
 	public float totalFare() {
 		return (float) (3.0 + (1.0 * rideDurationMinutes()) + tip() + tolls());
+	}
+
+	/**
+	 * (For Game Events Only) Deterministically generate teamId
+	 */
+	public long teamId() {
+		Random rnd = new Random(rideId);
+		return 2014000000 + rnd.nextInt(NUMBER_OF_TEAMS);
+	}
+
+	/**
+	 * (For Game Events Only) Deterministically generate gameFranchiseId
+	 */
+	public long gameFranchiseId() {
+		Random rnd = new Random(rideId);
+		return 2015000000 + rnd.nextInt(NUMBER_OF_GAME_FRANCHISE);
+	}
+
+	/**
+	 * (For Game Events Only) Randomly generate total kills
+	 */
+	public long totalKills() {
+		return aLong(1L, 1000L);
+	}
+
+	/**
+	 * (For Game Events Only) Randomly generate win (2), tie (1) or lose (0)
+	 */
+	public short win() {
+		return (short) aLong(0,2);
 	}
 
 	/**

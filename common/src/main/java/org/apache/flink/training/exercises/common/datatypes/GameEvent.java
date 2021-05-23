@@ -20,7 +20,7 @@ import java.time.Instant;
  * - win or lose or tie (0 - lose, 1 - tie, 2 - win)
  * - the total kills in the game
  */
-public class GameEvent implements Serializable {
+public class GameEvent implements Comparable<GameEvent>, Serializable {
 
     public long totalKills;
     public short gameMode;
@@ -55,8 +55,8 @@ public class GameEvent implements Serializable {
         this.teamId = g.teamId();
         this.gameFranchiseId = g.gameFranchiseId();
         this.gameMode = g.passengerCnt();
-        this.win = isStart ? null : g.win();
-        this.totalKills = isStart ? null : g.totalKills();
+        this.win = isStart ? -1 : g.win();
+        this.totalKills = isStart ? 0 : g.totalKills();
     }
 
     /**

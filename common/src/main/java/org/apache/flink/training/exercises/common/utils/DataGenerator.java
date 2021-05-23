@@ -163,14 +163,14 @@ public class DataGenerator {
 	 * (For Game Events Only) Randomly generate total kills
 	 */
 	public long totalKills() {
-		return aLong(1L, 1000L);
+		return aLong(1L, 100L, 30, 60);
 	}
 
 	/**
 	 * (For Game Events Only) Randomly generate win (2), tie (1) or lose (0)
 	 */
 	public short win() {
-		return (short) aLong(0,2);
+		return (short) aLong(0,3, 1.5F, 0.4F);
 	}
 
 	/**

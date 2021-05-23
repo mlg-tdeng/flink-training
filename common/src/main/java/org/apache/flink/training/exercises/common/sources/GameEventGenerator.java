@@ -18,7 +18,7 @@ import java.util.Random;
  */
 public class GameEventGenerator implements SourceFunction<GameEvent> {
     private static boolean running = true;
-    public static final int SLEEP_MILLIS_PER_EVENT = 10;
+    public static final int SLEEP_MILLIS_PER_EVENT = 200;
     private static final int BATCH_SIZE = 5;
 
     @Override
